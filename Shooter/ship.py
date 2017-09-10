@@ -5,8 +5,9 @@ class Ship():
         self.screen = screen
         self.ai_settings = ai_settings
 
-        self.image = pygame.image.load('/Users/Pat/Downloads/space_ship.png')
+        self.image = pygame.image.load('/Users/Pat/Downloads/space ship.png')
         self.rect = self.image.get_rect()
+
         self.screen_rect = screen.get_rect()
 
         # Self moving flag.
@@ -22,7 +23,11 @@ class Ship():
         self.rect.centerx = self.screen_rect.centerx
         self.rect.bottom = self.screen_rect.bottom
 
-    def update(self):
+    def center_ship(self):
+        self.rect.centerx = self.screen_rect.centerx
+        self.rect.bottom = self.screen_rect.bottom
+
+    def update(self, screen):
         if self.moving_right and self.rect.right < self.screen_rect.right:
             self.rect.centerx += self.ai_settings.ship_speed_fac
         if self.moving_left and self.rect.left > self.screen_rect.left:
@@ -32,6 +37,6 @@ class Ship():
         if self.moving_down and self.rect.bottom < self.screen_rect.bottom:
             self.rect.bottom += self.ai_settings.ship_speed_fac
 
-    def blitm(self):
+    def blitme(self):
         """Draw the ship at the its current location"""
         self.screen.blit(self.image, self.rect)
